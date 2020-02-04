@@ -1,0 +1,7 @@
+
+Pointers for knowledge / blog posts used for this project:
+https://proandroiddev.com/android-clean-architecture-with-viewmodel-usecases-and-repositories-part-1-b9e63889a1aa
+
+Issues regarding injecting viewModel (having non-zero argument constructor)
+https://medium.com/monstar-lab-bangladesh-engineering/dagger-for-android-a-beginners-guide-to-multibindings-de3ccba5636c
+--> exmaple on https://github.com/AVI5HEK/Purrfect-App
