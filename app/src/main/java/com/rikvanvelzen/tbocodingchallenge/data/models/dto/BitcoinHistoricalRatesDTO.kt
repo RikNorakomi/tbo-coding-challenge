@@ -10,15 +10,15 @@ import com.google.gson.annotations.SerializedName
  *  BitcoinPriceIndex [bpi] map has format:
  *  "2020-02-01": 9388.6617
  */
-data class BitcoinHistoricalValuesDTO(
+data class BitcoinHistoricalRatesDTO(
 
         val disclaimer: String? = null,
-        val time: Time,
-        val bpi: Map<String, Float>
+        val time: Time? = null,
+        val bpi: Map<String, Float>? = null
 ) {
     data class Time(
+
             @SerializedName("updated") val updatedUTC: String? = null,
             val updatedISO: String? = null
     )
 }
-// todo check if fields should by nullable

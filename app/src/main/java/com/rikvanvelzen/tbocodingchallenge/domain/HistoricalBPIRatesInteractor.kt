@@ -1,35 +1,54 @@
 package com.rikvanvelzen.tbocodingchallenge.domain
 
-import com.rikvanvelzen.tbocodingchallenge.data.models.domain.BitcoinExchangeRate
+import android.annotation.SuppressLint
+import com.rikvanvelzen.tbocodingchallenge.data.models.domain.BitcoinHistoricalExchangeRate
 import com.rikvanvelzen.tbocodingchallenge.data.repositories.BPIRatesRepository
 import io.reactivex.Single
+import java.text.SimpleDateFormat
+import java.util.*
 
 class HistoricalBPIRatesInteractor(private val bpiRatesRepository: BPIRatesRepository) : HistoricalBPIRatesUseCase {
 
-    override fun getBitcoinRates(): Single<List<BitcoinExchangeRate>> {
+    @SuppressLint("SimpleDateFormat")
+    val dateFormat = SimpleDateFormat("yyyy-MM-dd")
 
-        val startDate = ""
-        val endDate = ""
+    /**************************************************
+     * Public functions
+     **************************************************/
 
-        return bpiRatesRepository.getRates(startDate, endDate)
-//                .map { rates -> rates.map(cryptoViewModelMapper) }
+    override fun getBitcoinRates(amountOfDaysInThePast: Int): Single<List<BitcoinHistoricalExchangeRate>> {
+
+        return bpiRatesRepository.getHistoricalRates(getFromDate(amountOfDaysInThePast), getTillDate())
                 .map { rates ->
 
-                    val exchangeRates = mutableListOf<BitcoinExchangeRate>()
+                    val exchangeRates = mutableListOf<BitcoinHistoricalExchangeRate>()
 
-                    rates.bpi.forEach { (currency, rate) ->
-                        exchangeRates.add(BitcoinExchangeRate(
+                    rates.bpi?.forEach { (date, rate) ->
+                        exchangeRates.add(BitcoinHistoricalExchangeRate(
                                 rate,
-                                rates.time.updatedUTC ?: "",
-                                currency))
+                                date,
+                                "USD"))
                     }
 
                     exchangeRates
                 }
-
     }
 
-//    private val cryptoViewModelMapper: (BitcoinHistoricalValuesDTO) -> CryptoViewModel = {
-//        crypto -> CryptoViewModel(crypto.id, crypto.name, crypto.symbol, crypto.rank, crypto.priceUsd.toFloat(), crypto.priceBtc.toFloat(), crypto.percentChange24h.toFloat())
-//    }
+    /**************************************************
+     * Private functions
+     **************************************************/
+
+    private fun getFromDate(amountOfDaysInThePastFromToday: Int): String {
+
+        val calendar = Calendar.getInstance()
+        calendar.add(Calendar.DAY_OF_YEAR, -amountOfDaysInThePastFromToday)
+
+        val twoWeeksBefore: Date = calendar.time
+
+        return dateFormat.format(twoWeeksBefore)
+    }
+
+    private fun getTillDate(): String = dateFormat.format(Calendar.getInstance().time)
+
 }
+

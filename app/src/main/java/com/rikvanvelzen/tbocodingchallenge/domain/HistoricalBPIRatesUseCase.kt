@@ -1,11 +1,14 @@
 package com.rikvanvelzen.tbocodingchallenge.domain
 
-import com.rikvanvelzen.tbocodingchallenge.data.models.domain.BitcoinExchangeRate
+import com.rikvanvelzen.tbocodingchallenge.data.models.domain.BitcoinHistoricalExchangeRate
 import io.reactivex.Single
 
 
 interface HistoricalBPIRatesUseCase {
 
-    fun getBitcoinRates() : Single<List<BitcoinExchangeRate>>
+    /**
+     * [amountOfDaysInThePast] determines from how many days in the past the bitcoin values are retrieved
+     */
+    fun getBitcoinRates(amountOfDaysInThePast: Int): Single<List<BitcoinHistoricalExchangeRate>>
 }
 

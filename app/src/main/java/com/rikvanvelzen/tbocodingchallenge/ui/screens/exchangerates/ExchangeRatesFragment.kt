@@ -23,7 +23,6 @@ class ExchangeRatesFragment : MvvmBaseFragment<ExchangeRatesFragmentBinding, Exc
         adapter = ExchangeRatesAdapter(viewModel, this)
         binding.fragmentExchangeRateRecycler.adapter = adapter
 
-        viewModel.hello2()
         setupObservers()
     }
 

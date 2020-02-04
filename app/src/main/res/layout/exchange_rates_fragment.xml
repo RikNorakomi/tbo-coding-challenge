@@ -13,27 +13,39 @@
 
     </data>
 
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/fragment_exchange_Rate_recycler"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="@{safeUnbox(viewModel.isLoading) ? View.INVISIBLE : View.VISIBLE}"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:itemCount="5"
-            tools:listitem="@layout/exchange_rate_item" />
+            app:onRefreshListener="@{() -> viewModel.onSwipeToRefresh()}"
+            app:refreshing="@{safeUnbox(viewModel.isLoading)}"
+            android:layout_height="wrap_content">
 
-        <ProgressBar
-            android:id="@+id/loading_indicator"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:indeterminate="true"
-            android:visibility="@{safeUnbox(viewModel.isLoading) ? View.VISIBLE : View.GONE}" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fragment_exchange_Rate_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="5"
+                tools:listitem="@layout/exchange_rate_item" />
+<!--            android:visibility="@{safeUnbox(viewModel.isLoading) ? View.INVISIBLE : View.VISIBLE}"-->
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+<!--        <ProgressBar-->
+<!--            android:id="@+id/loading_indicator"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:indeterminate="true"-->
+<!--            android:visibility="@{safeUnbox(viewModel.isLoading) ? View.VISIBLE : View.GONE}" />-->
 
     </RelativeLayout>
+
 
 </layout>
