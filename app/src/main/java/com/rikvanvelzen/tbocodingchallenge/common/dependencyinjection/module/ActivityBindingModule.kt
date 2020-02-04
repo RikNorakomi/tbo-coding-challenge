@@ -5,7 +5,6 @@ import com.rikvanvelzen.tbocodingchallenge.ui.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
-
 @Module
 abstract class ActivityBindingModule {
 

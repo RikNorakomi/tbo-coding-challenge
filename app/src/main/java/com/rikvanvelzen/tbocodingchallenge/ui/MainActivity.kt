@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.rikvanvelzen.tbocodingchallenge.R
 import com.rikvanvelzen.tbocodingchallenge.ui.screens.exchangerates.ExchangeRateViewModel
 import com.rikvanvelzen.tbocodingchallenge.ui.screens.exchangerates.ExchangeRatesFragment
+import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
@@ -26,7 +27,9 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
     }
 
     @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+    lateinit var mainViewModel: ExchangeRateViewModel
+//    @Inject
+//    lateinit var viewModelFactory: ViewModelProvider.Factory
 
 //    @Inject
 //    lateinit var fragmentInjector: DispatchingAndroidInjector<android.app.Fragment>
@@ -38,12 +41,11 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
 //    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val mainViewModel = ViewModelProviders.of(this, viewModelFactory)[ExchangeRateViewModel::class.java]
-
-        Log.e(TAG, "MainVM = $mainViewModel")
+//        val mainViewModel = ViewModelProviders.of(this, viewModelFactory)[ExchangeRateViewModel::class.java]
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
@@ -52,21 +54,3 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
         }
     }
 }
-
-// {
-//
-//    @Inject
-//    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
-//
-//    override fun androidInjector(): AndroidInjector<Any> {
-//        return dispatchingAndroidInjector
-//    }
-//
-//    @Inject
-//    lateinit var viewModelFactory: ViewModelProvider.Factory
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        AndroidInjection.inject(this)
-//        super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_main)
-//        val mainViewModel = ViewModelProviders.of(this, viewModelFactory)[MainViewModel::class.java]
