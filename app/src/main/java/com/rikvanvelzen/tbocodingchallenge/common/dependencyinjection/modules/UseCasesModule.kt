@@ -1,4 +1,4 @@
-package com.rikvanvelzen.tbocodingchallenge.common.dependencyinjection.application
+package com.rikvanvelzen.tbocodingchallenge.common.dependencyinjection.modules
 
 import com.rikvanvelzen.tbocodingchallenge.data.repositories.BPIRatesRepository
 import com.rikvanvelzen.tbocodingchallenge.domain.HistoricalBPIRatesInteractor

@@ -1,4 +1,4 @@
-package com.rikvanvelzen.tbocodingchallenge.common.dependencyinjection.application
+package com.rikvanvelzen.tbocodingchallenge.common.dependencyinjection
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

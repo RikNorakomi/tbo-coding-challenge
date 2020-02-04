@@ -3,6 +3,7 @@ package com.rikvanvelzen.tbocodingchallenge.data.repositories
 import com.rikvanvelzen.tbocodingchallenge.data.api.BitcoinPriceIndexApi
 import com.rikvanvelzen.tbocodingchallenge.data.models.dto.BitcoinHistoricalValuesDTO
 import io.reactivex.Single
+import javax.inject.Singleton
 
 interface BPIRatesRepository {
 

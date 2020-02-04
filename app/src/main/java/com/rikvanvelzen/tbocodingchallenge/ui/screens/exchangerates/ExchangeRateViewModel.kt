@@ -3,10 +3,9 @@ package com.rikvanvelzen.tbocodingchallenge.ui.screens.exchangerates
 import android.annotation.SuppressLint
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.rikvanvelzen.tbocodingchallenge.common.dependencyinjection.application.SCHEDULER_IO
-import com.rikvanvelzen.tbocodingchallenge.common.dependencyinjection.application.SCHEDULER_MAIN_THREAD
+import com.rikvanvelzen.tbocodingchallenge.common.dependencyinjection.modules.SCHEDULER_IO
+import com.rikvanvelzen.tbocodingchallenge.common.dependencyinjection.modules.SCHEDULER_MAIN_THREAD
 import com.rikvanvelzen.tbocodingchallenge.data.models.domain.BitcoinExchangeRate
-import com.rikvanvelzen.tbocodingchallenge.domain.FetchCurrentExchangeRateUseCase
 import com.rikvanvelzen.tbocodingchallenge.domain.HistoricalBPIRatesUseCase
 import com.rikvanvelzen.tbocodingchallenge.ui.screens.base.BaseViewModel
 import io.reactivex.Scheduler
@@ -59,6 +58,11 @@ class ExchangeRateViewModel
 
     fun hello() {
 
-        Log.e(TAG, "Hello!")
+
+    }
+
+    fun hello2() {
+        Log.e(TAG, "Hello22222!")
+
     }
 }

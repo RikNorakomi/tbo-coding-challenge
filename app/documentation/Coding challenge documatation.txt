@@ -3,5 +3,10 @@ Pointers for knowledge / blog posts used for this project:
 https://proandroiddev.com/android-clean-architecture-with-viewmodel-usecases-and-repositories-part-1-b9e63889a1aa
 
 Issues regarding injecting viewModel (having non-zero argument constructor)
+And a 3 part series on DI for beginners:
 https://medium.com/monstar-lab-bangladesh-engineering/dagger-for-android-a-beginners-guide-to-multibindings-de3ccba5636c
 --> exmaple on https://github.com/AVI5HEK/Purrfect-App
+
+
+// TODO:
+Check part 2 again to better understand and figure out how to set scopes on fragment/viewModel and prevent multiple instantiations of same vm

@@ -1,4 +1,4 @@
-package com.rikvanvelzen.tbocodingchallenge.common.dependencyinjection.module
+package com.rikvanvelzen.tbocodingchallenge.common.dependencyinjection.modules
 
 import com.rikvanvelzen.tbocodingchallenge.ui.screens.exchangerates.ExchangeRatesFragment
 import dagger.Module

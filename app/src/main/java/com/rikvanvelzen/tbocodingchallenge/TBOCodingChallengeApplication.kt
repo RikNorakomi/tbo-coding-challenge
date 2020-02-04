@@ -1,7 +1,7 @@
 package com.rikvanvelzen.tbocodingchallenge
 
 import android.app.Application
-import com.rikvanvelzen.tbocodingchallenge.common.dependencyinjection.application.DaggerAppComponent
+import com.rikvanvelzen.tbocodingchallenge.common.dependencyinjection.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector

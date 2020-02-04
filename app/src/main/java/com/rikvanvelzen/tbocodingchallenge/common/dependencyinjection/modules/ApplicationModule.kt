@@ -1,4 +1,4 @@
-package com.rikvanvelzen.tbocodingchallenge.common.dependencyinjection.application
+package com.rikvanvelzen.tbocodingchallenge.common.dependencyinjection.modules
 
 import dagger.Module
 import dagger.Provides

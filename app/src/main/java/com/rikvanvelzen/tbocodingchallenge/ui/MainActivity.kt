@@ -1,51 +1,17 @@
 package com.rikvanvelzen.tbocodingchallenge.ui
 
 import android.os.Bundle
-import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.rikvanvelzen.tbocodingchallenge.R
-import com.rikvanvelzen.tbocodingchallenge.ui.screens.exchangerates.ExchangeRateViewModel
+import com.rikvanvelzen.tbocodingchallenge.ui.screens.base.BaseActivity
 import com.rikvanvelzen.tbocodingchallenge.ui.screens.exchangerates.ExchangeRatesFragment
-import dagger.android.AndroidInjection
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasAndroidInjector
-import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), HasAndroidInjector {
-//class MainActivity : AppCompatActivity(), HasFragmentInjector {
+class MainActivity : BaseActivity() {
 
-    private val TAG = javaClass.simpleName
-
-    @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
-
-    override fun androidInjector(): AndroidInjector<Any> {
-        return dispatchingAndroidInjector
-    }
-
-    @Inject
-    lateinit var mainViewModel: ExchangeRateViewModel
-//    @Inject
-//    lateinit var viewModelFactory: ViewModelProvider.Factory
-
-//    @Inject
-//    lateinit var fragmentInjector: DispatchingAndroidInjector<android.app.Fragment>
-
-    val fragment by lazy { ExchangeRatesFragment() }
-
-//    override fun fragmentInjector(): AndroidInjector<android.app.Fragment>? {
-//        return fragmentInjector
-//    }
+    private val fragment by lazy { ExchangeRatesFragment() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-//        val mainViewModel = ViewModelProviders.of(this, viewModelFactory)[ExchangeRateViewModel::class.java]
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()

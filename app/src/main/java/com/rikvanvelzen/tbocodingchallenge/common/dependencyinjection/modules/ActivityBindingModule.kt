@@ -1,4 +1,4 @@
-package com.rikvanvelzen.tbocodingchallenge.common.dependencyinjection.module
+package com.rikvanvelzen.tbocodingchallenge.common.dependencyinjection.modules
 
 import com.rikvanvelzen.tbocodingchallenge.common.dependencyinjection.scope.ActivityScope
 import com.rikvanvelzen.tbocodingchallenge.ui.MainActivity
@@ -9,6 +9,6 @@ import dagger.android.ContributesAndroidInjector
 abstract class ActivityBindingModule {
 
     @ActivityScope
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = [FragmentBindingModule::class])
     abstract fun contributeMainActivity(): MainActivity
 }
