@@ -32,7 +32,8 @@ class ExchangeRatesFragment : MvvmBaseFragment<ExchangeRatesFragmentBinding, Exc
 
     private fun setupObservers() {
 
-        viewModel.getExchangeRates().observe(viewLifecycleOwner, Observer {
+        viewModel.getCurrentRate()
+        viewModel.getHistoricalRates().observe(viewLifecycleOwner, Observer {
             adapter.setData(it)
         })
     }

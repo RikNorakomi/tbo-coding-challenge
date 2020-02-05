@@ -29,7 +29,6 @@ class HistoricalBPIRatesUseCaseTest {
         SUT = HistoricalBPIRatesImpl(bpiRatesRepository)
     }
 
-
     @Test
     fun getBitcoinRates_error_errorResponseReturned() {
         // arrange
@@ -44,7 +43,6 @@ class HistoricalBPIRatesUseCaseTest {
                 .test()
                 .assertError(errorResponse)
     }
-
 
     @Test
     fun getBitcoinRates_success_observableCompletes() {

@@ -13,6 +13,9 @@ Clean architecture tutorial and discussion of:
 - Usage of ROOM with coroutines!!
 https://www.raywenderlich.com/3595916-clean-architecture-tutorial-for-android-getting-started
 
+Testing NPE on flatMap:
+https://medium.com/@fabioCollini/testing-asynchronous-rxjava-code-using-mockito-8ad831a16877
+
 Solid (D) =
 Dependency Inversion: Components should depend on abstractions rather than concrete implementations.
 Also higher level modules shouldn’t depend on lower level modules.

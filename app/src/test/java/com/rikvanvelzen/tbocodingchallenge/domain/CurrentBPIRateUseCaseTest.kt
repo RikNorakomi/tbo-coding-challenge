@@ -15,6 +15,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner
 
+
 @RunWith(MockitoJUnitRunner::class)
 class CurrentBPIRateUseCaseTest {
 
@@ -60,18 +61,18 @@ class CurrentBPIRateUseCaseTest {
     }
 
     @Test
-    fun getCurrentBitcoinRate_error_errorResponseReturned() {
+    fun getCurrentBitcoinRate_error_observableCompletes() {
         // arrange
-        val errorResponse = Throwable("Error response")
+        val errorThrowable = Throwable("Error response")
 
         // act
         whenever(bpiRatesRepository.getCurrentRate())
-                .thenReturn(Observable.error(errorResponse))
+                .thenReturn(Observable.error(errorThrowable))
 
         // assert
         SUT.getCurrentBitcoinRate(EUR)
                 .test()
-                .assertError(errorResponse)
+                .assertError(errorThrowable)
                 .dispose()
 
     }

@@ -1,7 +1,6 @@
 package com.rikvanvelzen.tbocodingchallenge.ui.screens.exchangerates
 
 import android.annotation.SuppressLint
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.rikvanvelzen.tbocodingchallenge.common.dependencyinjection.modules.SCHEDULER_IO
 import com.rikvanvelzen.tbocodingchallenge.common.dependencyinjection.modules.SCHEDULER_MAIN_THREAD
@@ -25,24 +24,25 @@ class ExchangeRateViewModel
         @Named(SCHEDULER_IO) val subscribeOnScheduler: Scheduler,
         @Named(SCHEDULER_MAIN_THREAD) val observeOnScheduler: Scheduler) : BaseViewModel() {
 
-    private var exchangeRates: MutableLiveData<List<BitcoinHistoricalExchangeRate>>? = null
     private val defaultCurrency = Currencies.USD
 
+    var error = MutableLiveData<Throwable>()
     var currentRate = MutableLiveData<BitcoinCurrentExchangeRate>()
+    var historicalExchangeRates = MutableLiveData<List<BitcoinHistoricalExchangeRate>>()
 
     /**************************************************
      * Public functions
      **************************************************/
 
-    fun getExchangeRates(): MutableLiveData<List<BitcoinHistoricalExchangeRate>> {
+    fun getHistoricalRates(): MutableLiveData<List<BitcoinHistoricalExchangeRate>> {
 
-        if (exchangeRates == null) {
-            exchangeRates = MutableLiveData()
-            loadHistoricalBPIRates()
-            loadCurrentBPIRate()
-        }
+        loadHistoricalBPIRates()
 
-        return exchangeRates as MutableLiveData<List<BitcoinHistoricalExchangeRate>>
+        return historicalExchangeRates
+    }
+
+    fun getCurrentRate(){
+        loadCurrentBPIRate()
     }
 
     fun onSwipeToRefresh() {
@@ -80,10 +80,11 @@ class ExchangeRateViewModel
     private fun onCurrentRateReceived(currentRate: BitcoinCurrentExchangeRate) = this.currentRate.postValue(currentRate)
 
     private fun onHistoricalRatesReceived(exchangeRates: List<BitcoinHistoricalExchangeRate>) {
-        this.exchangeRates?.value = exchangeRates.reversed()
+        this.historicalExchangeRates?.value = exchangeRates.reversed()
     }
 
     private fun onError(t: Throwable) {
-        Log.e(TAG, "onError:$t")
+        error.postValue(t)
     }
+
 }
