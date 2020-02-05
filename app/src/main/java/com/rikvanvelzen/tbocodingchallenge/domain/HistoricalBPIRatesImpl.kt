@@ -7,7 +7,9 @@ import io.reactivex.Single
 import java.text.SimpleDateFormat
 import java.util.*
 
-class HistoricalBPIRatesInteractor(private val bpiRatesRepository: BPIRatesRepository) : HistoricalBPIRatesUseCase {
+const val DEFAULT_CURRENCY = "USD"
+
+class HistoricalBPIRatesImpl(private val bpiRatesRepository: BPIRatesRepository) : HistoricalBPIRatesUseCase {
 
     @SuppressLint("SimpleDateFormat")
     val dateFormat = SimpleDateFormat("yyyy-MM-dd")
@@ -27,7 +29,7 @@ class HistoricalBPIRatesInteractor(private val bpiRatesRepository: BPIRatesRepos
                         exchangeRates.add(BitcoinHistoricalExchangeRate(
                                 rate,
                                 date,
-                                "USD"))
+                                DEFAULT_CURRENCY))
                     }
 
                     exchangeRates

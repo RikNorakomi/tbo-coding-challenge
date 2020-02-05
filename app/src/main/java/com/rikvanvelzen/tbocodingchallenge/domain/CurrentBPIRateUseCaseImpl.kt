@@ -4,7 +4,7 @@ import com.rikvanvelzen.tbocodingchallenge.data.models.domain.BitcoinCurrentExch
 import com.rikvanvelzen.tbocodingchallenge.data.repositories.BPIRatesRepository
 import io.reactivex.Observable
 
-class CurrentBPIRateInteractor(private val bpiRatesRepository: BPIRatesRepository) : CurrentBPIRateUseCase {
+class CurrentBPIRateUseCaseImpl(private val bpiRatesRepository: BPIRatesRepository) : CurrentBPIRateUseCase {
 
     override fun getCurrentBitcoinRate(currency: String): Observable<BitcoinCurrentExchangeRate> {
 
@@ -12,8 +12,8 @@ class CurrentBPIRateInteractor(private val bpiRatesRepository: BPIRatesRepositor
 
                 .map { DTO ->
 
-                    val rate = DTO.priceIndexMap[currency]?.rateFormatted ?: ""
-                    val lastUpdate = DTO.time.updatedUTC ?: ""
+                    val rate = DTO.priceIndexMap?.get(currency)?.rateFormatted ?: ""
+                    val lastUpdate = DTO.time?.updatedUTC ?: ""
 
                     BitcoinCurrentExchangeRate(rate, lastUpdate, currency)
                 }

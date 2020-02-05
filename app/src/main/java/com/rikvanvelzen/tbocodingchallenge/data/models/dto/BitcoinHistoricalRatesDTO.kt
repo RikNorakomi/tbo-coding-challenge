@@ -13,8 +13,8 @@ import com.google.gson.annotations.SerializedName
 data class BitcoinHistoricalRatesDTO(
 
         val disclaimer: String? = null,
-        val time: Time? = null,
-        val bpi: Map<String, Float>? = null
+        val bpi: Map<String, Float>? = null,
+        val time: Time? = null
 ) {
     data class Time(
 

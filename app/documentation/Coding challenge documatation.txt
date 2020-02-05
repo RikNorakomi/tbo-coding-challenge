@@ -7,6 +7,17 @@ And a 3 part series on DI for beginners:
 https://medium.com/monstar-lab-bangladesh-engineering/dagger-for-android-a-beginners-guide-to-multibindings-de3ccba5636c
 --> exmaple on https://github.com/AVI5HEK/Purrfect-App
 
+Clean architecture tutorial and discussion of:
+- Abstraction prnciple / business logic
+- SUSPEND function and Coroutines usage instead of Rx
+- Usage of ROOM with coroutines!!
+https://www.raywenderlich.com/3595916-clean-architecture-tutorial-for-android-getting-started
+
+Solid (D) =
+Dependency Inversion: Components should depend on abstractions rather than concrete implementations.
+Also higher level modules shouldn’t depend on lower level modules.
+
+- Reading: Uncle BOB's https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
 
 // TODO:
 Check part 2 again to better understand and figure out how to set scopes on fragment/viewModel and prevent multiple instantiations of same vm
