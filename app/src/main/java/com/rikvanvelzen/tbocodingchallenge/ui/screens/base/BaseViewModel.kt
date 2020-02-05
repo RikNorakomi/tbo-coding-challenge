@@ -10,7 +10,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.rikvanvelzen.tbocodingchallenge.common.SingleLiveEvent
+import com.rikvanvelzen.tbocodingchallenge.common.dependencyinjection.modules.SCHEDULER_IO
+import io.reactivex.Scheduler
 import io.reactivex.disposables.CompositeDisposable
+import javax.inject.Inject
+import javax.inject.Named
 
 open class BaseViewModel : ViewModel() {
 

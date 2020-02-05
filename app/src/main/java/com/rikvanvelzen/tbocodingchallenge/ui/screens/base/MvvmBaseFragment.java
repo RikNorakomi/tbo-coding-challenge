@@ -77,7 +77,7 @@ public abstract class MvvmBaseFragment<B extends ViewDataBinding, VM extends Bas
 
     private void setupBaseViewModelObservers() {
 
-//        viewModel.shouldNavigateBack().observe(getViewLifecycleOwner(), navigate -> getActivity().onBackPressed());
+        viewModel.shouldNavigateBack().observe(getViewLifecycleOwner(), navigate -> getActivity().onBackPressed());
     }
 
     @SuppressWarnings("unchecked")

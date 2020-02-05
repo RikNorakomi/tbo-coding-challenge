@@ -8,6 +8,9 @@ import com.rikvanvelzen.tbocodingchallenge.ui.screens.exchangerates.ExchangeRate
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
+import io.reactivex.Scheduler
+import io.reactivex.schedulers.Schedulers
+import javax.inject.Named
 
 @Module
 abstract class ViewModelModule {

@@ -8,8 +8,6 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 /**
- *
- *
  * For more info on the CoinDesk api see:
  * https://www.coindesk.com/coindesk-api
  */

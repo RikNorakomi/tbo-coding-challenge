@@ -45,9 +45,9 @@ class HistoricalBPIRatesImpl(private val bpiRatesRepository: BPIRatesRepository)
         val calendar = Calendar.getInstance()
         calendar.add(Calendar.DAY_OF_YEAR, -amountOfDaysInThePastFromToday)
 
-        val twoWeeksBefore: Date = calendar.time
+        val date: Date = calendar.time
 
-        return dateFormat.format(twoWeeksBefore)
+        return dateFormat.format(date)
     }
 
     private fun getTillDate(): String = dateFormat.format(Calendar.getInstance().time)

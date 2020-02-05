@@ -1,7 +1,6 @@
 package com.rikvanvelzen.tbocodingchallenge.ui.screens.exchangerates
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.lifecycle.Observer
 import com.rikvanvelzen.tbocodingchallenge.common.getOrAwaitValue
 import com.rikvanvelzen.tbocodingchallenge.common.mock
 import com.rikvanvelzen.tbocodingchallenge.common.whenever
@@ -16,8 +15,6 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.ArgumentCaptor
-import org.mockito.Captor
 import org.mockito.Mockito.anyInt
 import org.mockito.Mockito.reset
 import org.mockito.junit.MockitoJUnitRunner

@@ -80,10 +80,11 @@ class ExchangeRateViewModel
     private fun onCurrentRateReceived(currentRate: BitcoinCurrentExchangeRate) = this.currentRate.postValue(currentRate)
 
     private fun onHistoricalRatesReceived(exchangeRates: List<BitcoinHistoricalExchangeRate>) {
-        this.historicalExchangeRates?.value = exchangeRates.reversed()
+        this.historicalExchangeRates.value = exchangeRates.reversed()
     }
 
     private fun onError(t: Throwable) {
+        // TODO implement error on UI: this is just for unit test sake
         error.postValue(t)
     }
 
